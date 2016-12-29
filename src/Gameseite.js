@@ -25,42 +25,54 @@ export default class Gameseite extends Component {
     }
 
     handleKeyDown(ev) {
+        const { posX, posY } = this.state.pacman
+
         switch (ev.keyCode) {
             // left arrow
             case 37:
-                this.setState({
-                    pacman: {
-                        posX: this.state.pacman.posX - 1,
-                        posY: this.state.pacman.posY
-                    }
-                })
+                if (this.props.level[posY][posX - 1] === false) {
+                    this.setState({
+                        pacman: {
+                            posX: posX - 1,
+                            posY: posY
+                        }
+                    })
+                }
+
+
                 break
             // up arrow
             case 38:
-                this.setState({
-                    pacman: {
-                        posX: this.state.pacman.posX,
-                        posY: this.state.pacman.posY - 1
-                    }
-                })
+                if (this.props.level[posY - 1][posX] === false) {
+                    this.setState({
+                        pacman: {
+                            posX: posX,
+                            posY: posY - 1
+                        }
+                    })
+                }
                 break
             // right arrow
             case 39:
-                this.setState({
-                    pacman: {
-                        posX: this.state.pacman.posX + 1,
-                        posY: this.state.pacman.posY
-                    }
-                })
+                if (this.props.level[posY][posX + 1] === false) {
+                    this.setState({
+                        pacman: {
+                            posX: posX + 1,
+                            posY: posY
+                        }
+                    })
+                }
                 break
             // down arrow
             case 40:
-                this.setState({
-                    pacman: {
-                        posX: this.state.pacman.posX,
-                        posY: this.state.pacman.posY + 1
-                    }
-                })
+                if (this.props.level[posY + 1][posX] === false) {
+                    this.setState({
+                        pacman: {
+                            posX: posX,
+                            posY: posY + 1
+                        }
+                    })
+                }
                 break
             default:
                 break
@@ -72,24 +84,14 @@ export default class Gameseite extends Component {
             return null
         }
 
-        const lvl =
-            `XXXXXXXXXXXXX
-X    X      X
-X XX XX XXX  
-X     X XXX X
-X XXX X     X
-X X   X XXX X
-X X X       X
-X XXXXXXXXXXX`
 
-        const field = createFieldArray(lvl)
 
         // todo flexbox => http://stackoverflow.com/questions/19026884/flexbox-center-horizontally-and-vertically/33049198#33049198
         return (
             // centered div
             <div style={{ display: 'table', margin: '0 auto', position: 'relative' }}>
                 {
-                    field.map(row => {
+                    this.props.level.map(row => {
                         const cells = row.map(cell => {
                             const blockStyle = {
                                 width: '50px',
@@ -108,17 +110,5 @@ X XXXXXXXXXXX`
                 <Pacman posX={this.state.pacman.posX} posY={this.state.pacman.posY} />
             </div >
         )
-
-        function createFieldArray(str) {
-            const result = []
-            const lines = str.split('\n')
-            lines.forEach((line, lineIndex) => {
-                result[lineIndex] = []
-                line.split('').forEach((field) => {
-                    result[lineIndex].push(field === 'X')
-                })
-            })
-            return result
-        }
     }
 }

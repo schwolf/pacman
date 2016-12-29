@@ -21,11 +21,24 @@ class App extends Component {
   }
 
   render() {
+
+    const lvlAsString =
+      `XXXXXXXXXXXXX
+X    X      X
+X XX XX XXX  
+X     X XXX X
+X XXX X     X
+X X   X XXX X
+X X X       X
+X XXXXXXXXXXX`
+
+    const level = this.createLevel(lvlAsString)
+
     return (
       <div className="App">
         <Ladeseite isVisible={this.state.isLadeseiteVisible} onLoadFinished={this.handleLoadFinished} />
         <Startseite isVisible={this.state.isStartseiteVisible} onStartPlay={this.handleStartPlay} />
-        <Gameseite isVisible={this.state.isGameseiteVisible} />
+        <Gameseite isVisible={this.state.isGameseiteVisible} level={level} />
       </div>
     );
   }
@@ -43,6 +56,19 @@ class App extends Component {
       isGameseiteVisible: true
     })
   }
+
+  createLevel(str) {
+    const result = []
+    const lines = str.split('\n')
+    lines.forEach((line, lineIndex) => {
+      result[lineIndex] = []
+      line.split('').forEach((field) => {
+        result[lineIndex].push(field === 'X')
+      })
+    })
+    return result
+  }
+
 }
 
 export default App;
