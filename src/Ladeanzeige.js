@@ -8,7 +8,6 @@ export default class Ladeanzeige extends Component {
 
     componentDidMount() {
 
-
         const timer = window.setInterval(() => {
             if (this.state.fortschritt < 100) {
                 const newFortschritt = this.state.fortschritt + 1;

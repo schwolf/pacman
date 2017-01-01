@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Pacman from './Pacman'
+import Ghost from './Ghost'
+import { moveGhost } from './ghostAI'
 
 export default class Gameseite extends Component {
     constructor(props) {
@@ -9,19 +11,37 @@ export default class Gameseite extends Component {
             pacman: {
                 posX: 1,
                 posY: 7,
+            },
+            ghost: {
+                posX: 1,
+                posY: 1
+
             }
         }
 
         this.handleKeyDown = this.handleKeyDown.bind(this)
+
+
     }
 
     componentDidMount() {
         // plain old event listener here...
         document.addEventListener("keydown", this.handleKeyDown);
+
+        this.timer = window.setInterval(() => {
+            // todo: bad! refactor with routes!
+            if (this.props.isVisible) {
+                this.setState({ ghost: moveGhost(this.state.ghost, this.props.level) })
+            }
+        }, 1000)
+
     }
 
     componentWillUnmount() {
         document.removeEventListener("keydown", this.handleKeyDown);
+        if (this.timer) {
+            clearInterval(this.timer)
+        }
     }
 
     handleKeyDown(ev) {
@@ -108,6 +128,7 @@ export default class Gameseite extends Component {
                     })
                 }
                 <Pacman posX={this.state.pacman.posX} posY={this.state.pacman.posY} />
+                <Ghost posX={this.state.ghost.posX} posY={this.state.ghost.posY} />
             </div >
         )
     }
