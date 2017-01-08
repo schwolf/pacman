@@ -1,6 +1,6 @@
 import React from 'react'
 import Ladeanzeige from './Ladeanzeige'
-import logo from './pacman.png'
+import Logo from './Logo'
 
 export default function (props) {
     if (!props.isVisible) {
@@ -9,7 +9,7 @@ export default function (props) {
 
     return (
         <div>
-            <img src={logo} className="App-logo" alt="logo" />
+            <Logo animated />
             <h1>Welcome to Pacman</h1>
             <Ladeanzeige onLoadFinished={props.onLoadFinished} />
         </div>

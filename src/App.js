@@ -3,6 +3,7 @@ import './App.css'
 import Ladeseite from './Ladeseite'
 import Startseite from './Startseite'
 import Gameseite from './Gameseite'
+import styled from 'styled-components'
 
 class App extends Component {
   constructor(props) {
@@ -34,12 +35,17 @@ X XXXXXXXXXXX`
 
     const level = this.createLevel(lvlAsString)
 
+    const App = styled.div`
+      margin-top: 20%; 
+      width: 100%;
+    `
+
     return (
-      <div className="App">
+      <App>
         <Ladeseite isVisible={this.state.isLadeseiteVisible} onLoadFinished={this.handleLoadFinished} />
         <Startseite isVisible={this.state.isStartseiteVisible} onStartPlay={this.handleStartPlay} />
         <Gameseite isVisible={this.state.isGameseiteVisible} level={level} />
-      </div>
+      </App>
     );
   }
 

@@ -6,9 +6,6 @@ export function moveGhost(ghost, level) {
 
     const randomIndex = Math.floor(Math.random() * keys.length)
 
-    console.log(randomIndex)
-
-
     return possibilities[keys[randomIndex]](ghost.posX, ghost.posY)
 }
 

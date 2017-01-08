@@ -1,16 +1,12 @@
 import React from 'react'
 import ghost from './ghost.png'
+import styled from 'styled-components'
 
-export default function (props) {
+const Img = styled.img`
+        position: absolute;
+        top: ${props => props.posY * 50}px;
+        left: ${props => props.posX * 50}px;
+        width: 50px;
+        height: 50px;`
 
-    const style = {
-        position: 'absolute',
-        top: `${props.posY * 50}px`,
-        left: `${props.posX * 50}px`,
-        width: '50px',
-        height: '50px'
-    }
-    return (
-        <img src={ghost} alt='G' style={style} />
-    )
-}
+export default (props) => <Img alt='X' src={ghost} {...props} />

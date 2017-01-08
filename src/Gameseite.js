@@ -33,7 +33,7 @@ export default class Gameseite extends Component {
             if (this.props.isVisible) {
                 this.setState({ ghost: moveGhost(this.state.ghost, this.props.level) })
             }
-        }, 1000)
+        }, 500)
 
     }
 
