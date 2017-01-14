@@ -1,13 +1,19 @@
 import React, { Component } from 'react'
 import Pacman from './Pacman'
 import Ghost from './Ghost'
-import { moveGhost } from './ghostAI'
+import { getStateAfterGhostMoved, getStateAfterMovedPacman } from './stateFunctions'
 
 export default class Gameseite extends Component {
     constructor(props) {
         super(props)
 
-        this.state = {
+        this.state = this.getStartingState()
+
+        this.handleKeyDown = this.handleKeyDown.bind(this)
+    }
+
+    getStartingState() {
+        return {
             pacman: {
                 posX: 1,
                 posY: 7,
@@ -15,13 +21,8 @@ export default class Gameseite extends Component {
             ghost: {
                 posX: 1,
                 posY: 1
-
             }
         }
-
-        this.handleKeyDown = this.handleKeyDown.bind(this)
-
-
     }
 
     componentDidMount() {
@@ -29,9 +30,9 @@ export default class Gameseite extends Component {
         document.addEventListener("keydown", this.handleKeyDown);
 
         this.timer = window.setInterval(() => {
-            // todo: bad! refactor with routes!
-            if (this.props.isVisible) {
-                this.setState({ ghost: moveGhost(this.state.ghost, this.props.level) })
+            if (this.props.isVisible) { // todo: bad! refactor with routes!
+                const newState = getStateAfterGhostMoved(this.state, this.props.level)
+                this.setState(newState)
             }
         }, 500)
 
@@ -45,62 +46,17 @@ export default class Gameseite extends Component {
     }
 
     handleKeyDown(ev) {
-        const { posX, posY } = this.state.pacman
-
-        switch (ev.keyCode) {
-            // left arrow
-            case 37:
-                if (this.props.level[posY][posX - 1] === false) {
-                    this.setState({
-                        pacman: {
-                            posX: posX - 1,
-                            posY: posY
-                        }
-                    })
-                }
-
-
-                break
-            // up arrow
-            case 38:
-                if (this.props.level[posY - 1][posX] === false) {
-                    this.setState({
-                        pacman: {
-                            posX: posX,
-                            posY: posY - 1
-                        }
-                    })
-                }
-                break
-            // right arrow
-            case 39:
-                if (this.props.level[posY][posX + 1] === false) {
-                    this.setState({
-                        pacman: {
-                            posX: posX + 1,
-                            posY: posY
-                        }
-                    })
-                }
-                break
-            // down arrow
-            case 40:
-                if (this.props.level[posY + 1][posX] === false) {
-                    this.setState({
-                        pacman: {
-                            posX: posX,
-                            posY: posY + 1
-                        }
-                    })
-                }
-                break
-            default:
-                break
-        }
+        const newState = getStateAfterMovedPacman(this.state, ev.keyCode, this.props.level)
+        this.setState(newState)
     }
 
     render() {
         if (!this.props.isVisible) {
+            return null
+        }
+
+        if (this.state.pacman.posX === this.state.ghost.posX && this.state.pacman.posY === this.state.ghost.posY) {
+            this.props.pacmanCaught()
             return null
         }
 

@@ -19,6 +19,7 @@ class App extends Component {
 
     this.handleLoadFinished = this.handleLoadFinished.bind(this)
     this.handleStartPlay = this.handleStartPlay.bind(this)
+    this.handlePacmanCaught = this.handlePacmanCaught.bind(this)
   }
 
   render() {
@@ -44,7 +45,7 @@ X XXXXXXXXXXX`
       <App>
         <Ladeseite isVisible={this.state.isLadeseiteVisible} onLoadFinished={this.handleLoadFinished} />
         <Startseite isVisible={this.state.isStartseiteVisible} onStartPlay={this.handleStartPlay} />
-        <Gameseite isVisible={this.state.isGameseiteVisible} level={level} />
+        <Gameseite isVisible={this.state.isGameseiteVisible} level={level} pacmanCaught={this.handlePacmanCaught} />
       </App>
     );
   }
@@ -61,6 +62,14 @@ X XXXXXXXXXXX`
       isStartseiteVisible: false,
       isGameseiteVisible: true
     })
+  }
+
+  handlePacmanCaught() {
+    this.setState({
+      isStartseiteVisible: true,
+      isGameseiteVisible: false
+    })
+
   }
 
   createLevel(str) {
