@@ -1,18 +1,14 @@
 import { moveGhost } from './ghostAI'
 
 export function getStateAfterGhostMoved(state, props) {
-    // todo return only changed ghost state!
-
     const newPos = moveGhost(state.ghost, props.level)
 
-    const newState = Object.assign({}, state, { ghost: newPos })
+    const newState = Object.assign({}, { ghost: newPos })
 
     return newState
 }
 
 export function getStateAfterMovedPacman(state, keyCode, level) {
-    // todo return only changed pacman state!
-
     const { posX, posY } = state.pacman
 
     const newPos = Object.assign({}, state.pacman)
@@ -47,7 +43,7 @@ export function getStateAfterMovedPacman(state, keyCode, level) {
             break
     }
 
-    const newState = Object.assign({}, state, { pacman: newPos })
+    const newState = Object.assign({}, { pacman: newPos })
 
     return newState
 }
