@@ -1,16 +1,15 @@
 import { moveGhost } from './ghostAI'
 
-export function getStateAfterGhostMoved(state, props) {
-    const newPos = moveGhost(state.ghost, props.level)
+export function getStateAfterGhostMoved(state, {level}) {
+    const newPos = moveGhost(state.ghost, level)
 
     const newState = Object.assign({}, { ghost: newPos })
 
     return newState
 }
 
-export function getStateAfterMovedPacman(state, keyCode, level) {
+export function getStateAfterMovedPacman(state, {level}, keyCode) {
     const { posX, posY } = state.pacman
-
     const newPos = Object.assign({}, state.pacman)
 
     // todo low level zeugs auslagern wie bei getStateAfterGhostMoved

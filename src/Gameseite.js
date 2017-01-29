@@ -45,8 +45,8 @@ export default class Gameseite extends Component {
     }
 
     handleKeyDown(ev) {
-        const newState = getStateAfterMovedPacman(this.state, ev.keyCode, this.props.level)
-        this.setState(newState)
+        // next line: passing an additional parameter. see https://twitter.com/dan_abramov/status/824314363813232640
+        this.setState((state, props) => getStateAfterMovedPacman(state, props, ev.keyCode))
     }
 
     render() {
