@@ -31,8 +31,7 @@ export default class Gameseite extends Component {
 
         this.timer = window.setInterval(() => {
             if (this.props.isVisible) { // todo: bad! refactor with routes!
-                const newState = getStateAfterGhostMoved(this.state, this.props.level)
-                this.setState(newState)
+                this.setState(getStateAfterGhostMoved)
             }
         }, 500)
 

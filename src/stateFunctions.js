@@ -1,9 +1,9 @@
 import { moveGhost } from './ghostAI'
 
-export function getStateAfterGhostMoved(state, level) {
+export function getStateAfterGhostMoved(state, props) {
     // todo return only changed ghost state!
 
-    const newPos = moveGhost(state.ghost, level)
+    const newPos = moveGhost(state.ghost, props.level)
 
     const newState = Object.assign({}, state, { ghost: newPos })
 
