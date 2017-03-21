@@ -1,13 +1,3 @@
-http://localhost:8008/ecsp-angebotswandlung-gateway/angebotswandlung/angebot/?angebotsnr=Kim4LzuZbgwCv4phsBGDCnT%2BTwElrJr%2F%2FHMISF%2BxR1L6prLLjx8McNipP8kcnD%2Bb%2Bs92njXUtbUUMjhl7PFk2fXls46SzZR2dpLNjbfu8mwEA1DEXyF94G1YFbtXzPPIQUL2rODXrMPgZ3txtX2CjACq7LfgvyxUxgEhTCU4V8A%3D
-
-
-http://localhost:8008/ecsp-angebotswandlung-gateway/angebotswandlung/angebot/Kim4LzuZbgwCv4phsBGDCnT%2BTwElrJr%2F%2FHMISF%2BxR1L6prLLjx8McNipP8kcnD%2Bb%2Bs92njXUtbUUMjhl7PFk2fXls46SzZR2dpLNjbfu8mwEA1DEXyF94G1YFbtXzPPIQUL2rODXrMPgZ3txtX2CjACq7LfgvyxUxgEhTCU4V8A%3D
-
-
-
-
-
-
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
