@@ -1,9 +1,17 @@
 
-VDfszat/d61alEVGCVbShkuk1zE6yI/IKIgBSD7gXcQwTJN68am0reqHwtQf3fwCopn51cUBD5DFt6362Dgj3E6S6WwMj0vO0O9/lPKNML2uFzseSlWhJJxcv2GOsW7BHhHm7aBsPstqJNDNPJNsuWCiO8KUu3PAzgYEaSAFXxM
-
-bVppJI4x17NI6wIGUMnsvB1wGo6L43_8bfnsT0hR4yRfqGBzbrc4QjjLSjvGlm_9nmwVy2GBy2BP0GEGWQ-bmCWE8uIM3xxciH_NMqbrMJUjYWq9yfaDZgfegUww0zhd5iaRM7r7JrFOI284eFoSVLcfa-hVqzI2NDv7r0A_Z3o 
-
-
+- Lenker lösen
+- Schutzblecht ausbauen
+- Gabelklemmschrauben oben lösen
+- Verschlussschrauben anlösen
+- Vorderrad ausbauen (Bremsbacken?)
+- Gabelklemmschrauben unten lösen
+- Verschlussschrauben lösen
+- Tauchrohre rausziehen, entleeren und unter rein-und rausschieben reinigen
+- Luftpolster 120mm durch Kragen auf Spritze definieren
+- Öl großzügig einfüllen (nach Füllmenge Herstellerangabe)
+- Entlüften: Tauchrohre 20x eindrücken
+- Ölmenge mit Spritze einstellen (Tauchrohr eingeschoben, ohne Gabelfedern, 120mm)
+- Gabelfeder rein und in umgekehrter Reihenfolge einbauen
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
