@@ -1,0 +1,47 @@
+Matrix Keys aus verschiedenen Applikationen (Angebotswandlung, ZBB)
+
+Typen:
+
+
+- Nach Typ: anwendungsübergreifend statisch / anwendungsspezifisch statisch / dynamisch
+
+Beispiele: 
+
+anwendungsübergreifend statisch:
+- DomainName aus URL
+- Aktionsnummer
+- KdlgnLoginStatus (? weil über AEM gesetzt)
+- CustomerJourney3
+- CustomerJourney5
+
+
+anwendungsspezifisch statisch:
+- Produktgruppe
+- Tarifkurzbezeichnung
+- ViewName(s)
+- NavigationsPfad(e)
+- WmidLandingpage
+- Sparte
+
+
+dynamisch:
+- Produkt
+- Tarifkombi
+- Angebotswandlung
+- Zahlweise
+- BerechnungsErgebnis
+- VersicherungsBeginn
+- VnVp
+- Geschlecht
+
+
+Ideen Modul:
+
+- ctor werden Konfigurationsparameter, finale Tracking-Funktion usw. übergeben. Liefert einen Tracker.
+- Tracker verfügt über Basistrackings ("trackAufruf", "trackAbschluss", "trackFormularfehler"
+- Offen: sind Basistrackings erweiterbar um custom attribute?
+- Tracker ist erweiterbar um Custom trackings
+- Tracker verfügt über Mapping, welches ggf. für Custom tracking verwendet werden kann
+
+
+
