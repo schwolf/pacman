@@ -1,20 +1,3 @@
-publish.min.1489562888054.js
-
-Cannot read property 'length' of undefined
-
-
-...
-ET ",url:dkaNaviServletPath,dataType:"
-text ",success:function(d){if(d){var g=4;
-edStore.navigation = JSON.parse(d).navi;
-for (var f = 0; f < edStore.navigation.length; f++) {
-  for (var l in edStore.navigation[f]) {
-    var h = edStore.navigation[f][l];
-    var m = document.createElement("li");
-    if (h === "") {
-      var c = document.create
-...
-
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
