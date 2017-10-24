@@ -1248,3 +1248,197 @@ It is reported that `npm run build` can fail on machines with no swap space, whi
 ## Something Missing?
 
 If you have ideas for more “How To” recipes that should be on this page, [let us know](https://github.com/facebookincubator/create-react-app/issues) or [contribute some!](https://github.com/facebookincubator/create-react-app/edit/master/packages/react-scripts/template/README.md)
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace=""
+	xmlns:tns="" elementFormDefault="qualified">
+
+
+	<element name="anfrage">
+		<complexType>
+			<sequence>
+				<element name="angebote" type="tns:angebote" minOccurs="0" />
+				<element name="angebotsParameter" type="tns:angebotsParameter"
+					minOccurs="0" />
+			</sequence>
+		</complexType>
+	</element>
+
+	<complexType name="angebote">
+		<sequence>
+			<element name="angebot" type="tns:angebot" minOccurs="0"
+				maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+
+	<complexType name="angebotsParameter">
+		<sequence>
+			<element name="versicherungsBeginn" type="date" minOccurs="0" />
+			<element name="haustarif" type="boolean" minOccurs="0" />
+			<element name="euVermittlerrichtlinie" type="boolean"	minOccurs="0" />
+			<element name="geburtsdatum" type="date" minOccurs="0" />
+			<element name="angebotSpeichern" type="boolean" minOccurs="0" />
+			<element name="dAHinweiseBestaetigt" type="boolean"
+				minOccurs="0" />
+			<element name="tarife" type="tns:leistungsArtEnum" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="versichertePersonen" type="tns:versichertePersonen" minOccurs="0"/>
+			<element name="aktionsNummer" type="tns:maxLength4"/>
+			<element name="freundschaftswerbung" type="boolean" minOccurs="0"/>	
+		</sequence>
+	</complexType>
+
+	<complexType name="versichertePersonen">
+		<sequence>
+			<element name="versichertePerson" type="tns:versichertePerson" minOccurs="0"
+				maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+
+	<complexType name="versichertePerson">
+		<sequence>
+			<element name="personNummer" type="int" />
+			<element name="geburtsdatum" type="date" />
+		</sequence>
+		<attribute name="id" type="ID" use="optional" />
+	</complexType>
+
+	<complexType name="angebot">
+		<sequence>
+			<element name="gewaehlteVariante" type="integer" minOccurs="0" />
+			<element name="verkaufsproduktArt" type="tns:verkaufsproduktArt"
+				minOccurs="0" />
+			<element name="mandantId" type="int" minOccurs="0" />
+			<element name="vertriebskanal" type="tns:vertriebskanalEnum"
+				minOccurs="0" />
+			<element name="quellsystem" type="tns:quellsystemEnum"
+				minOccurs="0" />
+			<element name="verkaufsprozessArt" type="tns:verkaufsprozessArtEnum"
+				minOccurs="0" />
+			<element name="ersteller" type="tns:ersteller" minOccurs="0" />
+			<element name="vermittler" type="tns:vermittler" minOccurs="0" />
+			<element name="rabatt" type="tns:rabatt" minOccurs="0" />
+		</sequence>
+	</complexType>
+
+
+	<complexType name="ersteller">
+		<sequence>
+			<element name="erstellerNummer" type="tns:erstellerNummerLaenge"
+				minOccurs="0" />
+		</sequence>
+	</complexType>
+
+	<simpleType name="erstellerNummerLaenge">
+		<restriction base="string">
+			<maxLength value="20" />
+		</restriction>
+	</simpleType>
+
+	<complexType name="vermittler">
+		<sequence>
+			<element name="vermittlerNummer" type="tns:allowedNumbersMaxLength9" />
+			<element name="euVermittlerrichtlinie" type="boolean"
+				minOccurs="0" />
+			<element name="identifikationsNummer" type="tns:allowedParametersMaxLength50"
+				minOccurs="0" />
+		</sequence>
+	</complexType>
+
+	<simpleType name="allowedNumbersMaxLength9">
+		<restriction base="tns:maxLength9">
+			<pattern value="[0-9]{9}" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="maxLength9">
+		<restriction base="string">
+			<maxLength value="9" />
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="maxLength4">
+		<restriction base="string">
+			<maxLength value="4" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="allowedParametersMaxLength50">
+		<restriction base="tns:maxLength50">
+			<pattern
+				value="[^!&quot;&apos;=?€#;:$&amp;&lt;&gt;+/@%^~(){|}*`\&#91;\&#93;\&#92;]+" />
+		</restriction>
+	</simpleType>
+
+	<complexType name="rabatt">
+		<sequence>
+			<element name="wert" type="tns:rabattWert" />
+		</sequence>
+	</complexType>
+
+	<simpleType name="rabattWert">
+		<restriction base="string">
+			<enumeration value="PROZENT_2" />
+			<enumeration value="PROZENT_5" />
+			<enumeration value="PROZENT_10" />
+			<enumeration value="KEIN_RABATT" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="verkaufsproduktArt">
+		<restriction base="string">
+			<enumeration value="GEPV" />
+			<enumeration value="RD" />
+			<enumeration value="ZAHN" />
+			<enumeration value="ZAHN_ERSATZ" />
+			<enumeration value="ZAHN_ERHALT" />
+			<enumeration value="SZSSZL" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="vertriebskanalEnum">
+		<restriction base="string">
+			<enumeration value="TELEFON" />
+			<enumeration value="INTERNET" />
+			<enumeration value="SCHRIFTLICH" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="quellsystemEnum">
+		<restriction base="string">
+			<enumeration value="INTERNET" />
+			<enumeration value="EDWIN" />
+			<enumeration value="DAVID" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="verkaufsprozessArtEnum">
+		<restriction base="string">
+			<enumeration value="VOLLANGEBOT" />
+			<enumeration value="DIREKTABSCHLUSS" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="maxLength50">
+		<restriction base="string">
+			<maxLength value="50" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="maxLength30">
+		<restriction base="string">
+			<maxLength value="30" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="leistungsArtEnum">
+		<restriction base="string">
+			<enumeration value="GEPV" />
+			<enumeration value="RD_SINGLE" />
+			<enumeration value="RD_FAMILIE" />
+			<enumeration value="RD_FAMILIE_BEITRAGSFREI" />
+		</restriction>
+	</simpleType>
+
+</schema>
